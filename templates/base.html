@@ -7,13 +7,13 @@
         {% block meta %}{% endblock %}
         {% endspaceless %}
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="http://www.cnprog.com/content/style/style.css" rel="stylesheet" type="text/css" />
+        <link href="/content/style/style.css" rel="stylesheet" type="text/css" />
         <!--
         <meta name="verify-v1" content="55uGNnQVJW8p1bbXeF/Xbh9I7nZBM/wLhRz6N/I1kkA=" />
         <link rel="shortcut icon" href="/content/images/favicon.ico" >
-        
-        <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
         -->
+        <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
+        
         <script src="http://www.google.com/jsapi"></script>
         <script>google.load("jquery", "1.2.6");</script>
         {% with request.user.get_messages as messages%}
@@ -38,7 +38,7 @@
             <span>{% if request.user.get_messages %}
             Messages：{% for message in request.user.get_messages %}
             <font class="darkred">{{ message }}</font>, {% endfor %}查看
-            <a href="{{ request.user.get_profile_url }}">个人资料</a>{% endif %}</span>
+            <a href="{{ request.user.get_profile_url }}">profile</a>{% endif %}</span>
             <a class="close-notify" onclick="notify.close(true)">&times;</a>
         </div>
         {% include "header.html" %}
