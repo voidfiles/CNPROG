@@ -1,6 +1,6 @@
 # Django settings for lanai project.
 import os.path
-
+import sys
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -109,5 +109,6 @@ INSTALLED_APPS = (
 )
 
 # User settings
+assert False, sys.path
 from settings_local import *
 
