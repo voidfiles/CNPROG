@@ -16,9 +16,9 @@ urlpatterns = patterns('',
     (r'^$', index),
     (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.ico'}),
     (r'^favicon\.gif$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.gif'}),
-    #(r'^content/(?P<path>.*)$', 'django.views.static.serve',
-    #    {'document_root': os.path.join(APP_PATH, 'templates/content').replace('\\','/')}
-    #),
+    (r'^content/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': os.path.join(APP_PATH, 'templates/content').replace('\\','/')}
+    ),
     #(r'^upfiles/(?P<path>.*)$', 'django.views.static.serve',
     #    {'document_root': os.path.join(APP_PATH, 'templates/upfiles').replace('\\','/')}
     #),

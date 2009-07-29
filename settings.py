@@ -96,6 +96,5 @@ INSTALLED_APPS = (
 )
 
 # User settings
-assert False, sys.path
 from settings_local import *
 
