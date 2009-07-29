@@ -1,8 +1,10 @@
-﻿{% load extra_filters %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- template base.html -->
+{% load extra_filters %}
+{% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>{% block title %}{% endblock %} - BrntGarlic.com</title>
+        <title>{% block title %}{% endblock %} - {% trans "site title" %} - {% trans "site slogan" %}</title>
         {% spaceless %}
         {% block meta %}{% endblock %}
         {% endspaceless %}
@@ -16,6 +18,7 @@
         
         <script src="http://www.google.com/jsapi"></script>
         <script>google.load("jquery", "1.2.6");</script>
+
         {% with request.user.get_messages as messages%}
         {% if messages %}
         <style type="text/css">
@@ -36,9 +39,10 @@
     <body>
         <div class="notify" style="display:none">
             <span>{% if request.user.get_messages %}
-            Messages：{% for message in request.user.get_messages %}
+
+            {% trans "congratulations, community gave you a badge" %}: {% for message in request.user.get_messages %}
             <font class="darkred">{{ message }}</font>, {% endfor %}查看
-            <a href="{{ request.user.get_profile_url }}">profile</a>{% endif %}</span>
+            <a href="{{ request.user.get_profile_url }}">{% trans "profile" %}</a>{% endif %}</span>
             <a class="close-notify" onclick="notify.close(true)">&times;</a>
         </div>
         {% include "header.html" %}

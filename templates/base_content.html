@@ -1,7 +1,8 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+﻿{% load i18n %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
-        <title>{% block title %}{% endblock %} - CNProg.com 程序员问答社区</title>
+        <title>{% block title %}{% endblock %} - {{ APP_TITLE }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="verify-v1" content="55uGNnQVJW8p1bbXeF/Xbh9I7nZBM/wLhRz6N/I1kkA=" />
         <link rel="shortcut icon" href="/content/images/favicon.ico" >
@@ -9,9 +10,34 @@
 		 {% spaceless %}
         {% block forestyle %}{% endblock %}
         {% endspaceless %}
-        <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
         <script src="http://www.google.com/jsapi"></script>
-       <script>google.load("jquery", "1.2.6");</script>
+        <script>google.load("jquery", "1.2.6");</script>
+		<script type="text/javascript">
+			var i18nLang = 'en';
+		</script>
+        <script type='text/javascript' src='/content/js/com.cnprog.i18n.js'></script>
+	    <script type='text/javascript' src='/content/js/jquery.i18n.js'></script>
+        <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
+
+       <!-- <script type="text/javascript">
+        var uservoiceJsHost = ("https:" == document.location.protocol) ? "https://uservoice.com" : "http://cdn.uservoice.com";
+        document.write(unescape("%3Cscript src='" + uservoiceJsHost + "/javascripts/widgets/tab.js' type='text/javascript'%3E%3C/script%3E"))
+        </script>
+        <script type="text/javascript">
+        UserVoice.Tab.show({ 
+			//EDIT!!!
+            key: 'uservoicekey',
+            host: 'where.uservoice.com', 
+            forum: 'general', 
+            alignment: 'left', /* 'left', 'right' */
+            background_color:'#777', 
+            text_color: 'white', /* 'white', 'black' */
+            hover_color: '#06C',
+            lang: 'en' /* 'en', 'de', 'nl', 'es', 'fr' */
+        })
+        </script>-->
+		<!-- todo move this to settings-->
+
 
         {% with request.user.get_messages as messages%}
         {% if messages %}
@@ -32,9 +58,9 @@
     <body>
         <div class="notify" style="display:none">
             <span>{% if request.user.get_messages %}
-            恭喜您，社区给您颁发了奖牌：{% for message in request.user.get_messages %}
-            <font class="darkred">{{ message }}</font>, {% endfor %}查看
-            <a href="{{ request.user.get_profile_url }}">个人资料</a>{% endif %}</span>
+            {% trans "congratulations, community gave you a badge" %}:{% for message in request.user.get_messages %}
+            <font class="darkred">{{ message }}</font>, {% endfor %}{% trans "see" %}
+            <a href="{{ request.user.get_profile_url }}">{% trans "profile" %}</a>{% endif %}</span>
             <a class="close-notify" onclick="notify.close(true)">&times;</a>
         </div>
         {% include "header.html" %}
