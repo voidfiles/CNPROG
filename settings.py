@@ -1,6 +1,6 @@
 # Django settings for lanai project.
 import os.path
-
+import sys
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -39,8 +39,8 @@ TIME_ZONE = 'Asia/Chongqing Asia/Chungking'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-#LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'zh-cn'
+LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'zh-cn'
 
 SITE_ID = 1
 
@@ -109,5 +109,6 @@ INSTALLED_APPS = (
 )
 
 # User settings
+assert False, sys.path
 from settings_local import *
 

@@ -12,15 +12,16 @@ feeds = {
 
 APP_PATH = os.path.dirname(__file__)
 urlpatterns = patterns('',
+    (r'^tags/$', app.tags),
     (r'^$', index),
     (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.ico'}),
     (r'^favicon\.gif$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.gif'}),
-    (r'^content/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': os.path.join(APP_PATH, 'templates/content').replace('\\','/')}
-    ),
-    (r'^upfiles/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': os.path.join(APP_PATH, 'templates/upfiles').replace('\\','/')}
-    ),
+    #(r'^content/(?P<path>.*)$', 'django.views.static.serve',
+    #    {'document_root': os.path.join(APP_PATH, 'templates/content').replace('\\','/')}
+    #),
+    #(r'^upfiles/(?P<path>.*)$', 'django.views.static.serve',
+    #    {'document_root': os.path.join(APP_PATH, 'templates/upfiles').replace('\\','/')}
+    #),
     (r'^account/', include('django_authopenid.urls')),
     (r'^signin/$', 'django_authopenid.views.signin'),
     url(r'^about/$', app.about, name='about'),
@@ -44,7 +45,7 @@ urlpatterns = patterns('',
     url(r'^answers/(?P<answer_id>\d+)/comments/(?P<comment_id>\d+)/delete/$', app.delete_answer_comment, name='delete_answer_comment'),
     #place general question item in the end of other operations
     url(r'^questions/(?P<id>\d+)//*', app.question, name='question'),
-    (r'^tags/$', app.tags),
+    
     (r'^tags/(?P<tag>[^/]+)/$', app.tag),
     (r'^users/$',app.users),
     url(r'^users/(?P<id>\d+)/edit/$', app.edit_user, name='edit_user'),
