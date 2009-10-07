@@ -11,8 +11,8 @@ INTERNAL_IPS = ('127.0.0.1',)
 #for OpenID auth
 ugettext = lambda s: s
 #LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
-LOGIN_URL = '/%s%s' % (_('account/'), _('signin/'))
-#LOGIN_URL = '/cuenta/ingresar/'
+#LOGIN_URL = '/%s%s' % (_('account/'), _('signin/'))
+LOGIN_URL = '/account/signin/'
 
 #EMAIL AND ADMINS
 ADMINS = (
